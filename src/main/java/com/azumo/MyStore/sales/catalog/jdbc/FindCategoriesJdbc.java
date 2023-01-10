@@ -4,13 +4,17 @@ import com.azumo.MyStore.sales.catalog.FindCategories;
 import com.azumo.MyStore.sales.catalog.category.Categories;
 import com.azumo.MyStore.sales.catalog.category.Category;
 import com.azumo.MyStore.sales.catalog.category.CategoryId;
-import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ * JDBC implementation for Find Categories use-cases.
+ */
 @RequiredArgsConstructor
-public class FindCategoriesJdbc implements FindCategories {
+@Slf4j
+final class FindCategoriesJdbc implements FindCategories {
 
     private final @NonNull JdbcTemplate jdbcTemplate;
 
@@ -28,5 +32,4 @@ public class FindCategoriesJdbc implements FindCategories {
                 .findFirst()
                 .orElseGet(UnknownCategory::new);
     }
-
 }

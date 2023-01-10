@@ -6,6 +6,9 @@ import lombok.ToString;
 
 import java.util.regex.Pattern;
 
+/**
+ * Category URI domain primitive.
+ */
 @EqualsAndHashCode
 @ToString
 public final class Uri {
@@ -14,7 +17,7 @@ public final class Uri {
 
     private final @NonNull String uri;
 
-    public Uri(@NonNull String uri){
+    public Uri(@NonNull String uri) {
         var uriVal = uri.strip();
         if (uriVal.isBlank()) {
             throw new IllegalArgumentException("URI cannot be empty!");
@@ -24,5 +27,8 @@ public final class Uri {
         }
         this.uri = uriVal;
     }
-    public String value(){return uri;}
+
+    public String value() {
+        return uri;
+    }
 }

@@ -1,7 +1,16 @@
 package com.azumo.MyStore.common.events;
 
-import com.azumo.MyStore.billing.payment.PaymentCollected;
-
+/**
+ * Publisher for domain events.
+ * <p>
+ * Decouples the domain layer from the messaging implementation.
+ */
 public interface EventPublisher {
+
+    /**
+     * Raises a domain event.
+     *
+     * @param event the domain event.
+     */
     void raise(DomainEvent event);
 }

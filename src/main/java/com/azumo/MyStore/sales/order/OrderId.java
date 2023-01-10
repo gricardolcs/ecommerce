@@ -4,13 +4,16 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 
+/**
+ * Order ID domain primitive.
+ */
 @EqualsAndHashCode
 @ToString
 public final class OrderId {
 
     private final @NonNull String id;
 
-    public OrderId(@NonNull Object id){
+    public OrderId(@NonNull Object id) {
         var idVal = id.toString().strip();
         if (idVal.isBlank()) {
             throw new IllegalArgumentException("ID cannot be empty!");
@@ -18,5 +21,7 @@ public final class OrderId {
         this.id = idVal;
     }
 
-    public String value(){ return id;}
+    public String value() {
+        return id;
+    }
 }

@@ -1,10 +1,18 @@
 package com.azumo.MyStore.sales.order;
 
-public interface PlaceableOrder extends Order{
+/**
+ * Placeable Order entity.
+ */
+public interface PlaceableOrder extends Order {
 
+    /**
+     * @throws {@link OrderAlreadyPlacedException} when the order has already been placed
+     */
     void place();
 
-    final class OrderAlreadyPlacedException extends IllegalStateException {}
-
+    /**
+     * OrderAlreadyPlacedException is thrown when an already placed Order is placed.
+     */
+    final class OrderAlreadyPlacedException extends IllegalStateException {
+    }
 }
-

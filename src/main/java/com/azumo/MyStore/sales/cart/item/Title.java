@@ -4,9 +4,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 
+/**
+ * Cart Item Title domain primitive.
+ */
 @EqualsAndHashCode
 @ToString
-public class Title {
+public final class Title {
+
     private final @NonNull String title;
 
     public Title(@NonNull String title) {

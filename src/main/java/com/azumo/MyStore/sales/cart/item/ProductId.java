@@ -4,9 +4,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 
+/**
+ * Product ID domain primitive.
+ */
 @EqualsAndHashCode
 @ToString
-public class ProductId {
+public final class ProductId {
+
     private final @NonNull String id;
 
     public ProductId(@NonNull Object id) {
@@ -20,5 +24,4 @@ public class ProductId {
     public String value() {
         return id;
     }
-
 }

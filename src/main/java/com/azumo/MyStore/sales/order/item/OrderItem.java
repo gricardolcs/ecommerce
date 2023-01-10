@@ -1,12 +1,18 @@
 package com.azumo.MyStore.sales.order.item;
 
 import com.azumo.MyStore.common.primitives.Quantity;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
+/**
+ * Order Item entity.
+ */
 @RequiredArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class OrderItem {
+public final class OrderItem {
 
     private final @NonNull ProductId productId;
     private final @NonNull Quantity quantity;
@@ -14,7 +20,8 @@ public class OrderItem {
     public ProductId productId() {
         return productId;
     }
+
     public Quantity quantity() {
-        return  quantity;
+        return quantity;
     }
 }

@@ -9,6 +9,9 @@ import lombok.ToString;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Null object implementation for Order entity.
+ */
 @ToString
 final class UnknownOrder implements Order {
 

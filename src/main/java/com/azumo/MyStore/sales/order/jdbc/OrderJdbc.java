@@ -19,21 +19,25 @@ import java.util.List;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.summingInt;
 
-
+/**
+ * JDBC implementation for Order entity.
+ */
 @EqualsAndHashCode(of = "id")
 @ToString(of = {"id", "total", "items"})
 @Slf4j
-public class OrderJdbc implements PlaceableOrder {
+final class OrderJdbc implements PlaceableOrder {
 
     private final @NonNull OrderId id;
     private final @NonNull Money total;
-    private @NonNull Collection<OrderItem> items;
-    private @NonNull JdbcTemplate jdbcTemplate;
-    private @NonNull EventPublisher eventPublisher;
+    private final @NonNull Collection<OrderItem> items;
+
+    private final @NonNull JdbcTemplate jdbcTemplate;
+    private final @NonNull EventPublisher eventPublisher;
+
     private boolean placed = false;
 
     public OrderJdbc(@NonNull OrderId id, @NonNull Money total, @NonNull Collection<OrderItem> items,
-                     @NonNull JdbcTemplate jdbcTemplate, @NonNull EventPublisher eventPublisher){
+                     @NonNull JdbcTemplate jdbcTemplate, @NonNull EventPublisher eventPublisher) {
         if (items.isEmpty()) {
             throw new OrderHasNoItemsException();
         }
@@ -43,7 +47,6 @@ public class OrderJdbc implements PlaceableOrder {
         this.jdbcTemplate = jdbcTemplate;
         this.eventPublisher = eventPublisher;
     }
-
 
     @Override
     public OrderId id() {
@@ -76,8 +79,9 @@ public class OrderJdbc implements PlaceableOrder {
         log.info("Order placed: {}", this);
     }
 
-    private OrderPlaced toOrderPlaced(){
-        return new OrderPlaced(Instant.now(),
+    private OrderPlaced toOrderPlaced() {
+        return new OrderPlaced(
+                Instant.now(),
                 id.value(),
                 items.stream().collect(groupingBy(
                         item -> item.productId().value(),

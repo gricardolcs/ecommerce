@@ -7,10 +7,14 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+/**
+ * JDBC implementation for Retrieve Cart use-cases.
+ */
 @RequiredArgsConstructor
-public class RetrieveCartJdbc implements RetrieveCart {
+class RetrieveCartJdbc implements RetrieveCart {
 
     private final @NonNull JdbcTemplate jdbcTemplate;
+
     @Override
     public Cart byId(CartId cartId) {
         return new CartJdbc(cartId, jdbcTemplate);

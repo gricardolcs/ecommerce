@@ -1,6 +1,6 @@
 package com.azumo.MyStore.warehouse;
 
-import com.ttulka.ecommerce.common.events.DomainEvent;
+import com.azumo.MyStore.common.events.DomainEvent;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

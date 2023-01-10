@@ -1,11 +1,7 @@
 package com.azumo.MyStore.sales.catalog.jdbc;
 
 import com.azumo.MyStore.common.primitives.Money;
-import com.azumo.MyStore.sales.catalog.product.Description;
-import com.azumo.MyStore.sales.catalog.product.Product;
-import com.azumo.MyStore.sales.catalog.product.Products;
-import com.azumo.MyStore.sales.catalog.product.Title;
-import com.azumo.MyStore.sales.catalog.product.ProductId;
+import com.azumo.MyStore.sales.catalog.product.*;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,6 +12,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+/**
+ * JDBC implementation of Products collection.
+ */
 @RequiredArgsConstructor
 final class ProductsJdbc implements Products {
 
@@ -41,7 +40,7 @@ final class ProductsJdbc implements Products {
     public Products range(int start, int limit) {
         if (start < 0 || limit <= 0 || limit - start > UNLIMITED) {
             throw new IllegalArgumentException("Start must be greater than zero, " +
-                    "items count must be greater than zero and less or equal than " + UNLIMITED);
+                                               "items count must be greater than zero and less or equal than " + UNLIMITED);
         }
         this.start = start;
         this.limit = limit;
@@ -72,4 +71,3 @@ final class ProductsJdbc implements Products {
                 jdbcTemplate);
     }
 }
-

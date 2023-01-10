@@ -4,9 +4,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 
+/**
+ * Cart ID domain primitive.
+ */
 @EqualsAndHashCode
 @ToString
-public class CartId {
+public final class CartId {
+
     private final @NonNull String id;
 
     public CartId(@NonNull Object id) {
@@ -20,5 +24,4 @@ public class CartId {
     public String value() {
         return id;
     }
-
 }
